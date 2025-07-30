@@ -1,61 +1,229 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Restaurant Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern restaurant management system built with Laravel, featuring both admin and client interfaces.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Admin Panel
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   **Dashboard**: Overview of orders, products, and categories
+-   **Category Management**: CRUD operations for food/drink categories
+-   **Product Management**: Add, edit, delete menu items with images
+-   **Order Management**: View and manage customer orders
+-   **Order Status Updates**: Update order and payment status
+-   **File Upload**: Image upload for categories and products
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Client Interface
 
-## Learning Laravel
+-   **Menu Display**: Attractive menu with category filtering
+-   **Product Search**: Search functionality for menu items
+-   **Shopping Cart**: Add, update, remove items from cart
+-   **Checkout Process**: Complete order placement with customer details
+-   **Order Confirmation**: Order summary and confirmation page
+-   **Responsive Design**: Mobile-friendly interface
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Technology Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   **Backend**: Laravel 12 (PHP 8.4)
+-   **Frontend**: Bootstrap 5, Font Awesome, JavaScript
+-   **Database**: SQLite (can be changed to MySQL/PostgreSQL)
+-   **File Storage**: Laravel Storage with public disk
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation
 
-## Laravel Sponsors
+### Prerequisites
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   PHP 8.4 or higher
+-   Composer
+-   Node.js (for asset compilation)
 
-### Premium Partners
+### Setup Steps
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1. **Clone the repository**
+
+    ```bash
+    git clone <repository-url>
+    cd resto-app
+    ```
+
+2. **Install PHP dependencies**
+
+    ```bash
+    composer install
+    ```
+
+3. **Environment setup**
+
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+4. **Database setup**
+
+    ```bash
+    php artisan migrate
+    php artisan db:seed
+    ```
+
+5. **Storage setup**
+
+    ```bash
+    php artisan storage:link
+    ```
+
+6. **Start the development server**
+    ```bash
+    php artisan serve
+    ```
+
+The application will be available at `http://localhost:8000`
+
+## Database Structure
+
+### Tables
+
+-   **categories**: Food and drink categories
+-   **products**: Menu items with prices and descriptions
+-   **orders**: Customer orders with status tracking
+-   **order_items**: Individual items in each order
+
+### Sample Data
+
+The application comes with sample data including:
+
+-   8 categories (Main Dishes, Appetizers, Soups, Salads, Desserts, Hot Drinks, Cold Drinks, Alcoholic Beverages)
+-   18 products across different categories
+
+## Usage
+
+### Admin Access
+
+-   Navigate to `/admin/dashboard` for admin panel
+-   Manage categories, products, and orders
+-   Upload images for categories and products
+
+### Client Access
+
+-   Homepage displays the menu
+-   Browse categories and products
+-   Add items to cart
+-   Complete checkout process
+
+## File Structure
+
+```
+resto-app/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── Admin/           # Admin controllers
+│   │   └── Client/          # Client controllers
+│   └── Models/              # Eloquent models
+├── database/
+│   ├── migrations/          # Database migrations
+│   └── seeders/            # Database seeders
+├── resources/
+│   └── views/
+│       ├── admin/          # Admin views
+│       ├── client/         # Client views
+│       └── layouts/        # Layout templates
+└── routes/
+    └── web.php             # Application routes
+```
+
+## Key Features
+
+### Admin Features
+
+-   **CRUD Operations**: Full Create, Read, Update, Delete for categories and products
+-   **Image Management**: Upload and manage images for categories and products
+-   **Order Management**: View, update status, and manage customer orders
+-   **Dashboard Analytics**: Overview of orders, products, and categories
+
+### Client Features
+
+-   **Responsive Menu**: Mobile-friendly menu display
+-   **Category Filtering**: Filter products by category
+-   **Search Functionality**: Search products by name or description
+-   **Shopping Cart**: Session-based cart management
+-   **Order Processing**: Complete checkout with customer information
+
+## Customization
+
+### Adding New Categories
+
+1. Go to Admin Panel → Categories
+2. Click "Add New Category"
+3. Fill in name, description, and upload image
+4. Set active status
+
+### Adding New Products
+
+1. Go to Admin Panel → Products
+2. Click "Add New Product"
+3. Fill in product details
+4. Select category and upload image
+5. Set price and availability
+
+### Modifying Styles
+
+-   Edit `resources/views/layouts/app.blade.php` for main styling
+-   Customize Bootstrap classes and CSS
+-   Add custom JavaScript in the scripts section
+
+## Security Features
+
+-   **CSRF Protection**: All forms include CSRF tokens
+-   **File Upload Validation**: Image upload validation and security
+-   **Input Validation**: Server-side validation for all inputs
+-   **SQL Injection Protection**: Laravel's Eloquent ORM protection
+
+## Performance Optimizations
+
+-   **Eager Loading**: Relationships loaded efficiently
+-   **Image Optimization**: Proper image storage and serving
+-   **Database Indexing**: Optimized database queries
+-   **Caching**: Session-based cart management
+
+## Deployment
+
+### Production Setup
+
+1. Set environment variables for production
+2. Configure database connection
+3. Set up file storage (AWS S3 recommended for production)
+4. Configure web server (Apache/Nginx)
+5. Set up SSL certificate
+
+### Environment Variables
+
+```env
+APP_ENV=production
+APP_DEBUG=false
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=restaurant_db
+DB_USERNAME=username
+DB_PASSWORD=password
+```
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Support
+
+For support and questions, please contact the development team or create an issue in the repository.
+
+---
+
+**Note**: This is a demo application. For production use, additional security measures, authentication, and payment processing should be implemented.
